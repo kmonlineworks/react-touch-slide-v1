@@ -7,23 +7,22 @@ import {
 	CardTitle,
 } from './CardStyle';
 
-function Card({ products }) {
-	console.log(products);
-	if (products.description.length > 50) {
-		products.description = products.description.substring(0, 50) + '...';
+function Card({ product }) {
+	if (product.description.length > 50) {
+		product.description = product.description.substring(0, 50) + '...';
 	}
-	if (products.title.length > 25) {
-		products.title = products.title.substring(0, 25) + '...';
+	if (product.title.length > 25) {
+		product.title = product.title.substring(0, 25) + '...';
 	}
 
 	return (
 		<CardContainer>
 			<CardMediaContainer>
-				<CardMedia src={products.thumbnail} atl={products.title} />
-				<CardCategory>{products.category}</CardCategory>
+				<CardMedia src={product.thumbnail} atl={product.title} />
+				<CardCategory>{product.category}</CardCategory>
 			</CardMediaContainer>
-			<CardTitle>{products.title}</CardTitle>
-			<CardDesc>{products.description}</CardDesc>
+			<CardTitle>{product.title}</CardTitle>
+			<CardDesc>{product.description}</CardDesc>
 		</CardContainer>
 	);
 }

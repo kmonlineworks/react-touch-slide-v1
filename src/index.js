@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     max-width: 1100px;
     margin: 10px auto;
 
+    @media only screen and (max-width: 768px){
+      margin: 10px;
+  }
+  .grid-4{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
