@@ -9,11 +9,13 @@ export const PaginationContainer = styled.ul`
 
 export const PaginationItem = styled.li`
 	padding: 3px 8px;
-	background-color: white;
+	color: ${(props) => (props.active ? 'white' : '#333')};
+	background-color: ${(props) => (props.active ? '#333' : 'white')};
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 
 	&:hover {
+		background-color: ${(props) => (props.active ? '#333' : '#eee')};
 		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 	}
 `;

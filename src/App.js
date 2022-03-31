@@ -37,7 +37,11 @@ function App() {
 					<Card key={index + 1} product={item} />
 				))}
 			</div>
-			<Pagination products={products} paginate={paginate} />
+			<Pagination
+				products={products}
+				paginate={paginate}
+				currentPage={currentPage}
+			/>
 		</div>
 	);
 }
