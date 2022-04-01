@@ -3,15 +3,11 @@ import { useEffect, useState } from 'react';
 import Pagination from './Pagination/Pagination';
 
 function App() {
-	let limit = 10;
+	const limit = 10;
 	const [products, setProducts] = useState([]);
-	const [currentPage, setCurrentPage] = useState(0);
-	let lastPage;
-	if (currentPage === 0) {
-		lastPage = 0;
-	} else {
-		lastPage = currentPage * limit;
-	}
+	const [currentPage, setCurrentPage] = useState(1);
+	let lastPage = currentPage * limit;
+	let firstPage = lastPage - limit;
 
 	const paginate = (item) => {
 		setCurrentPage(item);
@@ -19,7 +15,7 @@ function App() {
 
 	useEffect(() => {
 		const data = () => {
-			fetch(`https://dummyjson.com/products?skip=${lastPage}&limit=${limit}`)
+			fetch(`https://dummyjson.com/products?limit=100`)
 				.then((res) => {
 					return res.json();
 				})
@@ -28,20 +24,23 @@ function App() {
 				});
 		};
 		data();
-	}, [lastPage, limit]);
+	}, []);
 
 	return (
 		<div className="container">
 			<div className="grid-4">
-				{products.map((item, index) => (
+				{products?.slice(firstPage, lastPage).map((item, index) => (
 					<Card key={index + 1} product={item} />
 				))}
 			</div>
-			<Pagination
-				products={products}
-				paginate={paginate}
-				currentPage={currentPage}
-			/>
+			{products && (
+				<Pagination
+					products={products}
+					paginate={paginate}
+					currentPage={currentPage}
+					limit={limit}
+				/>
+			)}
 		</div>
 	);
 }
