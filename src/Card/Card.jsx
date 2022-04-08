@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from './CardStyle';
 
-function Card({ product }) {
+function Card({ product, isPressed, onDrag }) {
 	if (product.description.length > 50) {
 		product.description = product.description.substring(0, 50) + '...';
 	}
@@ -16,7 +16,7 @@ function Card({ product }) {
 	}
 
 	return (
-		<CardContainer>
+		<CardContainer draggable={true} isPressed={isPressed} onDrag={onDrag}>
 			<CardMediaContainer>
 				<CardMedia src={product.thumbnail} atl={product.title} />
 				<CardCategory>{product.category}</CardCategory>

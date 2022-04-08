@@ -14,8 +14,10 @@ const GlobalStyle = createGlobalStyle`
   }
   .container{
     width: 100%;
-    max-width: 1100px;
+    height: 100vh;
     margin: 10px auto;
+    display: grid;
+    place-items: center;
 
     @media only screen and (max-width: 768px){
       margin: 10px;
@@ -31,6 +33,30 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (max-width: 580px){
       grid-template-columns: 1fr;
     }
+  }
+  .touch-slider {
+    height: 450px;
+    padding: 20px;
+    overflow-x: auto;
+
+    .touch-outer-slider{
+      width: 1100px;
+      position: relative;
+    }
+
+    .touch-inner-slider{
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 300px;
+      gap: 20px;
+      position: absolute;
+      left:0;
+    }    
+  }
+
+  .touch-slider::-webkit-scrollbar,
+  .touch-slider::-webkit-scrollbar-track {
+    display: none;
   }
 `;
 

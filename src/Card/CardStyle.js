@@ -6,7 +6,6 @@ export const CardContainer = Styled.div`
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    cursor: pointer;
     overflow: hidden;
     transition: 0.3s ease-out;
 
